@@ -1,0 +1,36 @@
+﻿@model WebBanSach.ViewModel.LoginVM
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <div class="row w-25 mx-auto">
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.UserName)
+            @Html.TextBoxFor(t => t.UserName, new { placehoder = "UserName", @class = "form-control" })
+            @Html.ValidationMessageFor(t => t.UserName)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.Password)
+            @Html.PasswordFor(t => t.Password, new { placehoder = "Password", @class = "form-control" })
+            @Html.ValidationMessageFor(t => t.Password)
+        </div>
+    </div>
+    <div class="row w-25 mx-auto">
+        <div class="col-md-12">
+            @Html.ValidationSummary()
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <a href="/Home" class="btn btn-outline-danger mt-3">Cancel</a>
+            <button type="submit" class="btn btn-outline-primary text-center mt-3 ms-2">Login</button>
+        </div>
+    </div>
+}
+
+
+

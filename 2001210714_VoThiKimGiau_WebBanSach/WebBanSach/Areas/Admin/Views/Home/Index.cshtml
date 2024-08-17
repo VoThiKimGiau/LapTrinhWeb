@@ -1,0 +1,32 @@
+﻿@model List<WebBanSach.Models.Book>
+@{
+    ViewBag.Title = "Book";
+}
+
+<h3 class="text-center text-primary fw-bold mt-3 mb-5">@ViewBag.Title</h3>
+
+<a href="/Admin/Home/Create">Create new book</a>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Number Of Goods</th>
+        <th>Author</th>
+        <th>Type</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price.ToString("N0") VNĐ</td>
+            <td>@item.NO_Goods</td>
+            <td>@item.Author.AuthorName</td>
+            <td>@item.Type.TypeName</td>
+            <td>
+                <a href="/Admin/Home/Edit/@item.BookID">Edit</a> |
+                <a href="/Admin/Home/Delete/@item.BookID">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,63 @@
+﻿@model WebBanSach.Models.Book
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row w-25 mx-auto">
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.Name)
+            @Html.TextBoxFor(t => t.Name, new { placehoder = "Name", @class = "form-control" })
+            @Html.ValidationMessageFor(t => t.Name)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.Price)
+            @Html.TextBoxFor(t => t.Price, new { placehoder = "Price", @class = "form-control" })
+            @Html.ValidationMessageFor(t => t.Price)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.Detail)
+            @Html.TextBoxFor(t => t.Detail, new { placehoder = "Detail", @class = "form-control" })
+            @Html.ValidationMessageFor(t => t.Detail)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.NO_Goods)
+            @Html.TextBoxFor(t => t.NO_Goods, new { placehoder = "Number Of Goods", @class = "form-control" })
+            @Html.ValidationMessageFor(t => t.NO_Goods)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(model => model.Image, "Chọn hình")
+            <input type="file" name="imageFile" id="imageFile" class="form-control" />
+            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-12">
+            <label for="AuthorID">Author </label>
+            <select class="form-control" id="AuthorID" name="AuthorID">
+                @foreach (var item in ViewBag.Au)
+                {
+                    <option value="@item.AuthorID">@item.AuthorName</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-12">
+            <label for="TypeID">Type </label>
+            <select class="form-control" id="TypeID" name="TypeID">
+                @foreach (var item in ViewBag.Type)
+                {
+                    <option value="@item.TypeID">@item.TypeName</option>
+                }
+            </select>
+        </div>
+        <div class="row mx-auto mt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <a href="/Admin/Home" class="btn btn-outline-danger">Cancel</a>
+                <button class="btn btn-primary ms-2" type="submit">Create</button>
+            </div>
+        </div>
+    </div>
+}
+

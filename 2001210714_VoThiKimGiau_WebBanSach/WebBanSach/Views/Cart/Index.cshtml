@@ -1,0 +1,51 @@
+﻿@model List<WebBanSach.Models.Cart>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Index</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Tot. Price</th>
+        <th>Action</th>
+    </tr>
+    @{int i = 1; int totPrice = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@i</td>
+            <td>@item.Book.Name</td>
+            <td>
+                @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Get))
+                {
+                    <input type="number" value="@item.Quantity" name="quan" min="1" style="width: 80px;" />
+                    <input type="hidden" name="proid" value="@item.ProId" />
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                }
+            </td>
+            <td>
+                @{
+                    int Price = item.Quantity * item.Book.Price;
+                    i++;
+                    totPrice += Price;
+                }
+                @Price.ToString("N0") VND
+            </td>
+            <td>
+                <a href="/Cart/Delete/@item.Book.BookID" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    <tr>
+        <td colspan="4" class="text-center fw-bold">Total Price</td>
+        <td class="text-center fw-bold">@totPrice.ToString("N0") VND</td>
+    </tr>
+</table>
+
+<a href="/Home">Back</a>
+

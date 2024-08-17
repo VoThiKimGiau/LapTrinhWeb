@@ -1,0 +1,31 @@
+﻿@model WebBanSach.Models.Cart
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@using (Html.BeginForm("Delete", "Cart", FormMethod.Post))
+{
+    @Html.TextBoxFor(t => t.Book.BookID, new { Value = Model.Book.BookID, style = "display: none;" })
+    <div class="row w-25 mx-auto">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>@Model.Book.Name</td>
+            </tr>
+        </table>
+    </div>
+    <div class="row w-25 mx-auto mt-3">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <a href="/Cart" class="btn btn-outline-primary">Cancel</a>
+            <button class="btn btn-danger" type="submit">Delete</button>
+        </div>
+    </div>
+}
+
+
+

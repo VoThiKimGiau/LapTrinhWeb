@@ -1,0 +1,28 @@
+﻿@model List<WebBanSach.Models.Author>
+
+@{
+    ViewBag.Title = "Author";
+}
+
+<h3 class="text-center text-primary fw-bold mt-3 mb-5">@ViewBag.Title</h3>
+
+<a href="/Admin/Author/Create">Create new author</a>
+<table class="table">
+    <tr>
+        <th>Author ID</th>
+        <th>Author Name</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AuthorID</td>
+            <td>@item.AuthorName</td>
+            <td>
+                <a href="/Admin/Author/Edit/@item.AuthorID">Edit</a> |
+                <a href="/Admin/Author/Delete/@item.AuthorID">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+

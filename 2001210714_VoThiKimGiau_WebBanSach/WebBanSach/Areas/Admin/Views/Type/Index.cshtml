@@ -1,0 +1,30 @@
+﻿@model List<WebBanSach.Models.TypeB>
+
+@{
+    ViewBag.Title = "Type";
+}
+
+<h3 class="text-center text-primary fw-bold mt-3 mb-5">@ViewBag.Title</h3>
+
+<a href="/Admin/Type/Create">Create new type</a>
+<table class="table">
+    <tr>
+        <th>Type ID</th>
+        <th>Type Name</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.TypeID</td>
+            <td>@item.TypeName</td>
+            <td>
+                <a href="/Admin/Type/Edit/@item.TypeID">Edit</a> |
+                <a href="/Admin/Type/Delete/@item.TypeID">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+

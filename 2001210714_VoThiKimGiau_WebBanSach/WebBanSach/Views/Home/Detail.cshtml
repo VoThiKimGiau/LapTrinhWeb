@@ -1,0 +1,36 @@
+﻿@model WebBanSach.Models.Book
+
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="@Model.Image" height="400px" width="400px" />
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <p class="fs-2">@Model.Name</p>
+            </div>
+            <div class="row">
+                <p class="fs-6">Tác giả: @Model.Author.AuthorName</p>
+            </div>
+            <div class="row">
+                <p class="text-danger fw-bold fs-4">@Model.Price.ToString("N0") VNĐ</p>
+            </div>
+            <div class="row mt-4">
+                @using (Html.BeginForm("Add", "Cart", FormMethod.Get))
+                {
+                    <button class="btn btn-primary w-25" type="submit" name="id" value="@Model.BookID">Buy</button>
+                }
+            </div>
+            <div class="row">
+                <p class="fs-4 mt-4">Chi tiết</p><hr />
+                <p>@Model.Detail</p>
+            </div>
+        </div>
+    </div>
+</div>
+

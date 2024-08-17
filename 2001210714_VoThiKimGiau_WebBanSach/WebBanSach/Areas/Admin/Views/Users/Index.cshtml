@@ -1,0 +1,25 @@
+﻿@model List<WebBanSach.Identity.User>
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users</h2>
+<table class="table">
+    <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Date Of Birth</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.Address</td>
+            <td>@item.BirthDay </td>
+        </tr>
+    }
+</table>

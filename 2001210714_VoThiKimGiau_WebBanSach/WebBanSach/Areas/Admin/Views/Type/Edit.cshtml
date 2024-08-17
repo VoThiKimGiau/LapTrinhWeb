@@ -1,0 +1,28 @@
+﻿@model WebBanSach.Models.TypeB
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm("Edit", "Type", FormMethod.Post))
+{
+    @Html.TextBoxFor(t => t.TypeID, new { Value = Model.TypeID, style = "display: none;" })
+    <div class="row w-25 mx-auto">
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.TypeName)
+            @Html.TextBoxFor(t => t.TypeName, new { placehoder = "TypeName", @class = "form-control", Value = Model.TypeName })
+            @Html.ValidationMessageFor(t => t.TypeName)
+        </div>
+    </div>
+    <div class="row w-25 mx-auto mt-3">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <a href="/Admin/Type" class="btn btn-outline-danger">Cancel</a>
+            <button class="btn btn-primary" type="submit">Edit</button>
+        </div>
+    </div>
+}
+
+
+

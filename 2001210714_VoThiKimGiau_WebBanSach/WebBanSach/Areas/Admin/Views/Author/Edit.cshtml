@@ -1,0 +1,26 @@
+﻿@model WebBanSach.Models.Author
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm("Edit", "Author", FormMethod.Post))
+{
+    @Html.TextBoxFor(t => t.AuthorID, new { Value = Model.AuthorID, style = "display: none;" })
+    <div class="row w-25 mx-auto">
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.AuthorName)
+            @Html.TextBoxFor(t => t.AuthorName, new { placehoder = "AuthorName", @class = "form-control", Value = Model.AuthorName })
+            @Html.ValidationMessageFor(t => t.AuthorName)
+        </div>
+    </div>
+    <div class="row w-25 mx-auto mt-3">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <a href="/Admin/Author" class="btn btn-outline-danger">Cancel</a>
+            <button class="btn btn-primary" type="submit">Edit</button>
+        </div>
+    </div>
+}
+

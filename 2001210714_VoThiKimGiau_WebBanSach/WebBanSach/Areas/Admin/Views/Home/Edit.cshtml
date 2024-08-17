@@ -1,0 +1,72 @@
+﻿@model WebBanSach.Models.Book
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+{
+    @Html.TextBoxFor(t => t.BookID, new { Value = Model.BookID, style = "display: none;" })
+    <div class="row w-25 mx-auto">
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.Name)
+            @Html.TextBoxFor(t => t.Name, new { placehoder = "Name", @class = "form-control", Value = Model.Name })
+            @Html.ValidationMessageFor(t => t.Name)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.Price)
+            @Html.TextBoxFor(t => t.Price, new { placehoder = "Price", @class = "form-control", Value = Model.Price })
+            @Html.ValidationMessageFor(t => t.Price)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.Detail)
+            @Html.TextBoxFor(t => t.Detail, new { placehoder = "Detail", @class = "form-control", Value = Model.Detail })
+            @Html.ValidationMessageFor(t => t.Detail)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(t => t.NO_Goods)
+            @Html.TextBoxFor(t => t.NO_Goods, new { placehoder = "Number Of Goods", @class = "form-control", Value = Model.NO_Goods })
+            @Html.ValidationMessageFor(t => t.NO_Goods)
+        </div>
+        <div class="col-md-12">
+            <label for="AuthorID">Author </label>
+            <select class="form-control" id="AuthorID" name="AuthorID">
+                @foreach (var item in ViewBag.Au)
+                {
+                    if (item.AuthorID == Model.AuthorID)
+                    {
+                        <option value="@item.AuthorID" selected>@item.AuthorName</option>
+                    }
+                    else
+                    {
+                        <option value="@item.AuthorID">@item.AuthorName</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-md-12">
+            <label for="TypeID">Type </label>
+            <select class="form-control" id="TypeID" name="TypeID">
+                @foreach (var item in ViewBag.Type)
+                {
+                    if (item.TypeID == Model.TypeID)
+                    {
+                        <option value="@item.TypeID" selected>@item.TypeName</option>
+                    }
+                    else
+                    {
+                        <option value="@item.TypeID">@item.TypeName</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row w-25 mx-auto mt-3">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <a href="/Admin/Home" class="btn btn-outline-danger">Cancel</a>
+            <button class="btn btn-primary" type="submit">Edit</button>
+        </div>
+    </div>
+}

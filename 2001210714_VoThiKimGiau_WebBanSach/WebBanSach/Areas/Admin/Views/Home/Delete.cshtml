@@ -1,0 +1,38 @@
+﻿@model WebBanSach.Models.Book
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+{
+    @Html.TextBoxFor(t => t.BookID, new { Value = Model.BookID, style = "display: none;" })
+    <div class="row mx-auto">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Number Of Goods</th>
+                <th>Author</th>
+                <th>Type</th>
+            </tr>
+            <tr>
+                <td>@Model.BookID</td>
+                <td>@Model.Name</td>
+                <td>@Model.Price</td>
+                <td>@Model.NO_Goods</td>
+                <td>@Model.Author.AuthorName</td>
+                <td>@Model.Type.TypeName</td>
+            </tr>
+        </table>
+    </div>
+    <div class="row w-25 mx-auto mt-3">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <a href="/Admin/Home" class="btn btn-outline-danger">Cancel</a>
+            <button class="btn btn-primary" type="submit">Delete</button>
+        </div>
+    </div>
+}
